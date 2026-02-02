@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oui ou Non - Android Style</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .card {
+      background-color: #6200ee;
+      padding: 80px 40px;
+      border-radius: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .result {
+      font-size: 5rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.5s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="result" class="result">...</div>
+  </div>
+
+  <script>
+    const choices = ['OUI', 'NON'];
+    const resultEl = document.getElementById('result');
+
+    function generateResult() {
+      const random = choices[Math.floor(Math.random() * choices.length)];
+      resultEl.textContent = random;
+      resultEl.classList.remove('show');
+      setTimeout(() => {
+        resultEl.classList.add('show');
+      }, 50);
+    }
+
+    // Générer un résultat au chargement
+    generateResult();
+  </script>
+</body>
+</html>
